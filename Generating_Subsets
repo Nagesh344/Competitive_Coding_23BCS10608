@@ -1,0 +1,33 @@
+#include <bits/stdc++.h>
+using namespace std;
+void solve() {
+    int n ;
+    cin>>n;
+    vector<int> v(n);
+    vector<vector<int>> subs;
+    for(int i =0;i<n;i++)cin>>v[i];
+    int mask = 1<<n;
+    for(int i =0;i<mask;i++){
+        int val = i;
+        vector<int> temp;
+        for(int j =0;j<n;j++){
+            if((val & (1<<j))>0){
+                temp.push_back(v[j]);
+            }
+        }
+        if(temp.size())subs.push_back(temp);
+    }
+    for(auto i :subs){
+        for(auto j :i)cout<<j<<" ";
+        cout<<endl;
+    }
+}
+int32_t main() {
+    int t=1;
+    // cin >> t;
+    while (t--) {
+        solve();
+        cout << endl;
+    }
+    return 0;
+}
