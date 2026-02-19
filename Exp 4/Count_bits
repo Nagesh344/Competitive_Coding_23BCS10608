@@ -1,0 +1,37 @@
+#include <bits/stdc++.h>
+using namespace std;
+void solve() {
+    int n ;
+    cin>>n;
+    vector<int> v(n);
+    for(int i =0;i<n;i++)cin>>v[i];
+
+    vector<int> f(32,0);
+    int ans =0;
+    for(int k =0;k<n;k++){
+        int i = v[k];
+        for(int j=0;j<31;j++){
+            // f[j]+= (i&(1<<j));
+            if(i& (1<<j)){
+                ans += (k-f[j]);
+            }
+            else{
+                ans += f[j];
+            }
+            if(i& (1<<j)){
+                f[j]++;
+            }
+
+        }
+    }
+    cout<<2*ans;
+}
+int32_t main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        solve();
+        cout << endl;
+    }
+    return 0;
+}
